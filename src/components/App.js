@@ -22,6 +22,16 @@ async loadBlockchainData() {
   const networkId = await web3.eth.net.getId()
  
       //NEED TO LOAD BUSDTOKEN HERE
+    const busdTokenData = BUSDToken.networks[networkId]
+    if(busdTokenData) {
+      const busdToken = new web3.eth.Contract(BUSDToken.abi, '0xC3C08346480c7d6059193d9B978F19682b15524A') 
+      this.setState({busdToken})
+      let busdTokenBalance = await busdToken.methods.balanceOf(this.state.account).call()
+      this.setState({ busdTokenBalance: busdTokenBalance.toString() })
+    } else {
+      window.alert('BUSDToken contract not deployed to detected network.')
+    }
+
 
      // Load NovaSwap
      const novaSwapData = NovaSwap.networks[networkId]
