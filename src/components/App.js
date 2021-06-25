@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import './App.css'
 import Web3 from 'web3'
 import BUSDToken from '../abis/BUSDToken.json'
-import NovaToken from '../abis/NovaToken.json'
+import NovaToken from '../abis/NovaToken.json' //had this in the development server to show nova balance, not worried about this right now
 import NovaSwap from '../abis/NovaSwap.json'
 import Main from './Main'
 
@@ -21,6 +21,7 @@ async loadBlockchainData() {
   //load network chain ID
   const networkId = await web3.eth.net.getId()
  
+      //NEED TO LOAD BUSDTOKEN HERE
 
      // Load NovaSwap
      const novaSwapData = NovaSwap.networks[networkId]
